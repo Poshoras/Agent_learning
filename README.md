@@ -115,3 +115,5 @@ command + shift + . 会显示env文件（正常情况下会被隐藏，无法通
 新安装库：
 
 打开Vscode的terminal，然后输入：conda activate agent，之后 指令 python -m pip install ......
+
+**由于在同一个路径下的ipynb文件会共用一个kernel，即使你把其中一个ipynb改成py然后把它删了，之前的数据仍然留在kernel中，这种情况下会不停的报错until重启kernel**
