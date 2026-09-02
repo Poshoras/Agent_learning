@@ -1,4 +1,4 @@
-# Agent_learning
+# Agent_learning_basic_knowledge
 This repo is prepared for restoring some notes and demos.
 
 ## 模型采样参数
@@ -47,7 +47,7 @@ Aggregate the prob of top-p tokens until it reaches the threshold. After that, n
 
 在为您的智能体选择大语言模型时，可以从以下几个维度进行综合评估：
 
-|A | Description|
+|维度 | Description|
 |-------|-----|
 |性能与能力|这是最核心的考量。不同的模型擅长的任务不同，有的长于逻辑推理和代码生成，有的则在创意写作或多语言翻译上更胜一筹。您可以参考一些公开的基准测试排行榜（如 LMSys Chatbot Arena Leaderboard）来评估模型的综合能力。|
 |成本|对于闭源模型，成本主要体现在 API 调用费用，通常按 Token 数量计费。对于开源模型，成本则体现在本地部署所需的硬件（GPU、内存）和运维上。需要根据应用的预期使用量和预算做出选择。|
@@ -57,3 +57,61 @@ Aggregate the prob of top-p tokens until it reaches the threshold. After that, n
 |生态与工具链|一个模型的流行程度也决定了其周边生态的成熟度。主流模型通常拥有更丰富的社区支持、教程、预训练模型、微调工具和兼容的开发框架（如 LangChain, LlamaIndex, Hugging Face Transformers），这能极大地加速开发进程，降低开发难度。选择一个拥有活跃社区和完善工具链的模型，可以在遇到问题时更容易找到解决方案和资源。|
 |可微调性与定制化|对于需要处理特定领域数据或执行特定任务的智能体，模型的微调能力至关重要。一些模型提供了便捷的微调接口和工具，允许开发者使用自己的数据集对模型进行定制化训练，从而显著提升模型在特定场景下的性能和准确性。开源模型在这方面通常提供更大的灵活性。|
 |安全性与伦理|随着大语言模型的广泛应用，其潜在的安全风险和伦理问题也日益凸显。选择模型时，需要考虑其在偏见、毒性、幻觉等方面的表现，以及服务商或开源社区在模型安全和负责任AI方面的投入。对于面向公众或涉及敏感信息的应用，模型的安全性和伦理合规性是不可忽视的考量。|
+
+
+# Agent_build
+## 基础结构
+### 环境配置
+
+首先记录一下终端修改路径的命令，这是最基础的：
+
+|移动路径| 指令|
+|-------|-----|
+|最复杂的进入文件夹的路径：|cd /Users/isrealpeacelee/Desktop/AI/Agent1|
+|简化版本: |cd "AI/Agent1"|
+|退回桌面：|cd ~/Desktop|
+|从AI到Agent1：|cd Agent1|
+|从Agent1退到AI：|cd ..|
+|从Agent1退回桌面：| cd ../..|
+
+
+
+
+
+
+| 步骤 | 操作 | 命令 / 内容 | 说明 |
+|------|------|-------------|------|
+| 1 | 打开项目 | 在 VS Code 中打开项目文件夹 | 确保 Terminal 位于项目根目录 |
+| 2 | 打开 Terminal | `Terminal → New Terminal` | 打开终端 |
+| 3 | 确认项目路径 | `pwd` | 确认当前位于项目根目录 |
+| 4 | 创建 `.env` | `touch .env` | 创建环境变量配置文件 |
+| 5 | 检查文件 | `ls -la` | 确认 `.env` 创建成功 |
+| 6 | 配置 API | `open -e .env` | 打开 `.env` 并填写 API 配置 |
+| 7 | 填写配置 | `MODEL_ID=deepseek-chat` | 设置模型 ID |
+|  |  | `API_KEY=YOUR_DEEPSEEK_API_KEY` | 设置 DeepSeek API Key |
+|  |  | `BASE_URL=https://api.deepseek.com` | 设置 API 服务地址 |
+| 8 | 安装依赖 | `pip install python-dotenv` | 安装环境变量读取工具 |
+| 9 | 配置 Git | 在 `.gitignore` 中加入 `.env` | 防止 API Key 被上传到 GitHub |
+
+command + shift + . 会显示env文件（正常情况下会被隐藏，无法通过点击文件的方式打开）
+
+
+#### 关于代码环境
+写代码的时候要有环境意识！！
+
+                    你的电脑
+                       │
+          ┌────────────┼────────────┐
+          ↓            ↓            ↓
+       Agent项目    ML项目       其他项目
+          │            │            │
+       agent环境    ml环境      xxx环境
+          │            │            │
+     Python 3.12   Python 3.11   Python ...
+
+
+现在已经创建好了一个agent的环境。然后以后可以选择那个（agent）开头的环境。
+
+新安装库：
+
+打开Vscode的terminal，然后输入：conda activate agent，之后 指令 python -m pip install ......
