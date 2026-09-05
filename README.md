@@ -60,8 +60,9 @@ Aggregate the prob of top-p tokens until it reaches the threshold. After that, n
 
 
 # Agent_build
-## 基础结构
-### 环境配置
+
+
+## 环境配置
 
 首先记录一下终端修改路径的命令，这是最基础的：
 
@@ -96,7 +97,6 @@ Aggregate the prob of top-p tokens until it reaches the threshold. After that, n
 command + shift + . 会显示env文件（正常情况下会被隐藏，无法通过点击文件的方式打开）
 
 
-#### 关于代码环境
 写代码的时候要有环境意识！！
 
                     你的电脑
@@ -117,3 +117,13 @@ command + shift + . 会显示env文件（正常情况下会被隐藏，无法通
 打开Vscode的terminal，然后输入：conda activate agent，之后 指令 python -m pip install ......
 
 **由于在同一个路径下的ipynb文件会共用一个kernel，即使你把其中一个ipynb改成py然后把它删了，之前的数据仍然留在kernel中，这种情况下会不停的报错until重启kernel**
+
+
+## 概念梳理
+React，Plan and solve，reflection这叫做思考模式
+
+Langgraph这种叫做框架，框架是你要按照这个规定去写代码。Langgraph可以采用react也可以采用reflection的思考模式。
+
+这个Hello agent的课程，就是自己在搭建一个agent框架，而不是采用的任何外部封装好的框架（不是langchain，langgraph，AutoGen）这些框架。
+
+那框架这种概念是如何体现出来的呢？ 和我自己写的时候区别在哪里呢？ 优势在哪里呢？ React这种思考模式又是如何被镶嵌在框架中呢？晚上先搞懂langgraph框架，然后去思考这几个问题。
